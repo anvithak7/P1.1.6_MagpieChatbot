@@ -6,8 +6,8 @@
  *</li><li>
  *      Will transform statements as well as react to keywords
  *</li></ul>
- * @author Laurie White
- * @version April 2012
+ * @author Anvitha Kachinthaya and Janice Liu
+ * @version December 2019
  *
  */
 public class Ambrosia
@@ -18,7 +18,7 @@ public class Ambrosia
      */ 
     public String getGreeting()
     {
-        return "Hello, let's talk.";
+        return "Hello! It is I, Ambrosia! What are we cooking today?";
     }
     
     /**
@@ -369,12 +369,24 @@ public class Ambrosia
      */
     private String getRandomResponse()
     {
-        final int NUMBER_OF_RESPONSES = 10;
+        final int NUMBER_OF_RESPONSES = 11;
         double r = Math.random();
         int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
-        String response = "";
+        List<String> randomresponselist = new ArrayList<String>();
+        randomresponselist.add("Are you hungry? What’s it going to be today?");
+        randomresponselist.add("I’m famished. What’s cooking?");
+        randomresponselist.add("What’s that I hear? Is it mealtime?");
+        randomresponselist.add("It’s time to eat! What are we making?");
+        randomresponselist.add("Is it time for breakfast, lunch, or dinner? Or perhaps you want a snack?");
+        randomresponselist.add("我饿了. Let’s eat!");
+        randomresponselist.add("I didn't understand that. What are we making again?");
+        randomresponselist.add("Do you have an ingredient in mind? I’m only familiar with a few, unfortunately.");
+        randomresponselist.add("Okay. Are we still cooking a meal? What is it?");
+        randomresponselist.add("Let’s eat! What do you have in mind?");
+        randomresponselist.add("That's intriguing! I love the flavors of the world!");
+        String response = randomresponselist.get(whichResponse);
         
-        
+        /**
         if (whichResponse == 0)
         {
             response = "Interesting, tell me more.";
@@ -391,8 +403,7 @@ public class Ambrosia
         {
             response = "You don't say.";
         }
-
-		return response;
-	}
-
-}
+        **/
+        return response;
+        
+    }
