@@ -10,6 +10,9 @@
  * @version December 2019
  *
  */
+import java.util.Scanner;
+import java.util.*; // import everything including List and ArrayList
+
 public class Ambrosia
 {
     /**
