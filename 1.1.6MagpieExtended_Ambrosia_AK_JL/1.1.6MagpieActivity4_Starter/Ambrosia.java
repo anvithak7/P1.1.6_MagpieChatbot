@@ -35,23 +35,161 @@ public class Ambrosia
         {
             response = "Say something, please.";
         }
-
-        else if (findKeyword(statement, "no") >= 0)
+	   else if (findKeyword(statement, "no") >= 0)
         {
-            response = "Why so negative?";
+            response = "Okay. What else should I know?";
         }
-        else if (findKeyword(statement, "mother") >= 0
-                || findKeyword(statement, "father") >= 0
-                || findKeyword(statement, "sister") >= 0
-                || findKeyword(statement, "brother") >= 0)
+         else if (findKeyword(statement, "yes") >= 0)
         {
-            response = "Tell me more about your family.";
+            response = "Good! Let's do it.";
+        }
+        else if (findKeyword(statement, "thanks") >= 0)
+        {
+            response = "Of course!";
+        }
+      else if (findKeyword(statement, "spicy") >= 0)
+        {
+            response = "Oh, you want to eat spicy food? Do you want to make mapo tofu?";
+        }
+      else if (findKeyword(statement, "not spicy") >= 0)
+        {
+            response = "Hmmm... what non-spicy food should we cook today? What do you want to cook?";
+        }
+      else if (findKeyword(statement, "sweet") >= 0)
+        {
+            response = "I love sweet food! What kind of sweet food are you craving?";
+        }
+        
+       else if (findKeyword(statement, "breakfast") >= 0)
+        {
+            response = "Breakfast is the most important meal of the day! What would you like to eat?";
+        }
+       else if (findKeyword(statement, "lunch") >= 0)
+        {
+            response = "I love having lunch! What would you like to eat?";
+        }
+      else if (findKeyword(statement, "dinner") >= 0)
+        {
+            response = "It's always nice to have a good meal to end the day. What would you like to eat?";
+        }
+      else if (findKeyword(statement, "dessert") >= 0)
+        {
+            response = "Yum! Dessert is always something I look forward to! What would you like to eat?";
+        }
+      else if (findKeyword(statement, "snack") >= 0)
+        {
+            response = "I'm sure we can all agree that we love snacks! What would you like to eat?";
+        }
+      else if (findKeyword(statement, "dim sum") >= 0)
+        {
+            response = "Yum! Eating dim sum is always something I look forward to! What would you like to eat?";
+        }
+   
+        else if (findKeyword(statement, "vegetarian") >= 0)
+        {
+            response = "We offer many vegetarian recipes! What would you like to eat?";
+        }
+        else if (findKeyword(statement, "seafood") >= 0)
+        {
+            response = "We offer many seafood recipes! What would you like to eat?";
+        }
+        else if (findKeyword(statement, "dumplings") >= 0)
+        {
+            response = "I love dumplings! What kind of dumplings would you like to eat?";
+        }
+        else if (findKeyword(statement, "tofu") >= 0)
+        {
+            response = "Do you want to try making mapo tofu? It's spicy, but delicious!";
+        }
+        else if (findKeyword(statement, "soup") >= 0)
+        {
+            response = "Drinking warm soup is always the best! What kind of soup do you want to make?";
+        }
+         else if (findKeyword(statement, "lactose-intolerant") >= 0)
+        {
+            response = "We offer many recipes for people with lactose-intolerance. Do you have anything in particular you want to make?";
+        }
+        else if (findKeyword(statement, "paneer") >= 0)
+        {
+            response = "We offer many recipes for dishes containing paneer. Do you have anything in particular you want to make?";
+        }
+        else if (findKeyword(statement, "eggplant") >= 0)
+        {
+            response = "We offer many recipes for dishes containing eggplant. Do you have anything in particular you want to make?";
+        }
+          else if (findKeyword(statement, "peanuts") >= 0)
+        {
+            response = "We offer a variety of recipes for dishes with peanuts. Do you have anything in particular you want to make?";
+        }
+        else if (findKeyword(statement, "spinach") >= 0)
+        {
+            response = "Spinach is very healthy for you! Do you have anything in particular you want to make?";
+        }
+         else if (findKeyword(statement, "crunchy") >= 0)
+        {
+            response = "I love crunchy food! Do you have anything in particular you want to make?";
+        }
+          else if (findKeyword(statement, "sauce") >= 0)
+        {
+            response = "What kind of sauce you want to use? Soy sauce? BBQ sauce?";
+        }
+         else if (findKeyword(statement, "curry") >= 0)
+        {
+            response = "What kind of curry do you want to make?";
+        }
+         else if (findKeyword(statement, "carrots") >= 0)
+        {
+            response = "Carrots are very healthy for you! Do you have any dish in particular you want to make?";
+        }
+         else if (findKeyword(statement, "rice") >= 0)
+        {
+            response = "I love rice! Do you have any dish in particular you want to make?";
+        }
+        else if (findKeyword(statement, "noodles") >= 0)
+        {
+            response = "I love noodles! Do you have any dish in particular you want to make?";
+        }
+         else if (findKeyword(statement, "sour") >= 0)
+        {
+            response = "Sour food can taste very good! Do you have any dish in particular you want to make?";
+        }
+         else if (findKeyword(statement, "nut-free") >= 0)
+        {
+            response = "We consider your safety and preferences some of our top priorities in addition to giving you a recipe to a delicious meal. Do you have anything in particular you want to make?";
+        }
+        else if (findKeyword(statement, "eggless") >= 0)
+        {
+            response = "We consider your safety and preferences some of our top priorities in addition to giving you a recipe to a delicious meal. Do you have anything in particular you want to make?";
+        }
+        else if (findKeyword(statement, "wheatless") >= 0)
+        {
+            response = "We consider your safety and preferences some of our top priorities in addition to giving you a recipe to a delicious meal. Do you have anything in particular you want to make?";
+        }
+        else if (findKeyword(statement, "soy-free") >= 0)
+        {
+            response = "We consider your safety and preferences some of our top priorities in addition to giving you a recipe to a delicious meal. Do you have anything in particular you want to make?";
+        }
+        else if (findKeyword(statement, "Indian food") >= 0
+                || findKeyword(statement, "Indian cuisine") >= 0)
+        {
+            response = "Do you have anything in mind that you want to eat?";
+        }
+         else if (findKeyword(statement, "Chinese food") >= 0
+                || findKeyword(statement, "Chinese cuisine") >= 0)
+        {
+            response = "Do you have anything in mind that you want to eat?";
+        }
+        else if (findKeyword(statement, "hungry") >= 0
+                || findKeyword(statement, "starving") >= 0)
+        {
+            response = "Are you hungry? What do you want to eat?";
         }
 
+   
         // Responses which require transformations
-        else if (findKeyword(statement, "I want to", 0) >= 0)
+        else if (findKeyword(statement, "I want to eat", 0) >= 0)
         {
-            response = transformIWantToStatement(statement);
+            response = transformIWantToEatStatement(statement);
         }
         else if (findKeyword(statement, "I want", 0) >= 0)
         {
@@ -87,7 +225,7 @@ public class Ambrosia
      * @param statement the user statement, assumed to contain "I want to"
      * @return the transformed statement
      */
-    private String transformIWantToStatement(String statement)
+    private String transformIWantToEatStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -98,9 +236,9 @@ public class Ambrosia
             statement = statement.substring(0, statement
                     .length() - 1);
         }
-        int psn = findKeyword (statement, "I want to", 0);
+        int psn = findKeyword (statement, "I want to eat", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
-        return "What would it mean to " + restOfStatement + "?";
+        return "Alright! Do you want to try making " + restOfStatement + " today?";
         //return "Would you really be happy if you had to " + restOfStatement + "?";
     }
     
