@@ -36,15 +36,16 @@ public class Ambrosia
     public String getResponse(String statement) //Basic generic response code.
     {
         String response = "";
+	statement = statement.toLowerCase();
         if (statement.length() == 0)
         {
             response = "Say something, please.";
         }
-       else if (findKeyword(statement, "no") >= 0)
+        else if (findKeyword(statement, "no") >= 0)
         {
             response = "Okay. What else should I know?";
         }
-         else if (findKeyword(statement, "yes") >= 0)
+        else if (findKeyword(statement, "yes") >= 0)
         {
             response = "Good! Let's do it.";
         }
@@ -52,40 +53,40 @@ public class Ambrosia
         {
             response = "Of course!";
         }
-      else if (findKeyword(statement, "spicy") >= 0)
+      	else if (findKeyword(statement, "spicy") >= 0)
         {
             response = "Oh, you want to eat spicy food? Do you want to make mapo tofu?";
         }
-      else if (findKeyword(statement, "not spicy") >= 0)
+      	else if (findKeyword(statement, "not spicy") >= 0)
         {
             response = "Hmmm... what non-spicy food should we cook today? What do you want to cook?";
         }
-      else if (findKeyword(statement, "sweet") >= 0)
+      	else if (findKeyword(statement, "sweet") >= 0)
         {
             response = "I love sweet food! What kind of sweet food are you craving?";
         }
         
-       else if (findKeyword(statement, "breakfast") >= 0)
+       	else if (findKeyword(statement, "breakfast") >= 0)
         {
             response = "Breakfast is the most important meal of the day! What would you like to eat?";
         }
-       else if (findKeyword(statement, "lunch") >= 0)
+       	else if (findKeyword(statement, "lunch") >= 0)
         {
             response = "I love having lunch! What would you like to eat?";
         }
-      else if (findKeyword(statement, "dinner") >= 0)
+      	else if (findKeyword(statement, "dinner") >= 0)
         {
             response = "It's always nice to have a good meal to end the day. What would you like to eat?";
         }
-      else if (findKeyword(statement, "dessert") >= 0)
+      	else if (findKeyword(statement, "dessert") >= 0)
         {
             response = "Yum! Dessert is always something I look forward to! What would you like to eat?";
         }
-      else if (findKeyword(statement, "snack") >= 0)
+      	else if (findKeyword(statement, "snack") >= 0)
         {
             response = "I'm sure we can all agree that we love snacks! What would you like to eat?";
         }
-      else if (findKeyword(statement, "dim sum") >= 0)
+      	else if (findKeyword(statement, "dim sum") >= 0)
         {
             response = "Yum! Eating dim sum is always something I look forward to! What would you like to eat?";
         }
@@ -110,7 +111,7 @@ public class Ambrosia
         {
             response = "Drinking warm soup is always the best! What kind of soup do you want to make?";
         }
-         else if (findKeyword(statement, "lactose-intolerant") >= 0)
+        else if (findKeyword(statement, "lactose-intolerant") >= 0)
         {
             response = "We offer many recipes for people with lactose-intolerance. Do you have anything in particular you want to make?";
         }
@@ -122,7 +123,7 @@ public class Ambrosia
         {
             response = "We offer many recipes for dishes containing eggplant. Do you have anything in particular you want to make?";
         }
-          else if (findKeyword(statement, "peanuts") >= 0)
+        else if (findKeyword(statement, "peanuts") >= 0)
         {
             response = "We offer a variety of recipes for dishes with peanuts. Do you have anything in particular you want to make?";
         }
@@ -130,23 +131,23 @@ public class Ambrosia
         {
             response = "Spinach is very healthy for you! Do you have anything in particular you want to make?";
         }
-         else if (findKeyword(statement, "crunchy") >= 0)
+        else if (findKeyword(statement, "crunchy") >= 0)
         {
            response = "I love crunchy food! Do you have anything in particular you want to make?";
         }
-          else if (findKeyword(statement, "sauce") >= 0)
+        else if (findKeyword(statement, "sauce") >= 0)
         {
             response = "What kind of sauce you want to use? Soy sauce? BBQ sauce?";
         }
-         else if (findKeyword(statement, "curry") >= 0)
+        else if (findKeyword(statement, "curry") >= 0)
         {
             response = "What kind of curry do you want to make?";
         }
-         else if (findKeyword(statement, "carrots") >= 0)
+        else if (findKeyword(statement, "carrots") >= 0)
         {
             response = "Carrots are very healthy for you! Do you have any dish in particular you want to make?";
         }
-         else if (findKeyword(statement, "rice") >= 0)
+        else if (findKeyword(statement, "rice") >= 0)
         {
             response = "I love rice! Do you have any dish in particular you want to make?";
         }
@@ -154,11 +155,11 @@ public class Ambrosia
         {
             response = "I love noodles! Do you have any dish in particular you want to make?";
         }
-         else if (findKeyword(statement, "sour") >= 0)
+        else if (findKeyword(statement, "sour") >= 0)
         {
             response = "Sour food can taste very good! Do you have any dish in particular you want to make?";
         }
-         else if (findKeyword(statement, "nut-free") >= 0)
+        else if (findKeyword(statement, "nut-free") >= 0)
         {
             response = "We consider your safety and preferences some of our top priorities in addition to giving you a recipe to a delicious meal. Do you have anything in particular you want to make?";
         }
@@ -179,7 +180,7 @@ public class Ambrosia
         {
             response = "Do you have anything in mind that you want to eat?";
         }
-         else if (findKeyword(statement, "Chinese food") >= 0
+        else if (findKeyword(statement, "Chinese food") >= 0
                 || findKeyword(statement, "Chinese cuisine") >= 0)
         {
             response = "Do you have anything in mind that you want to eat?";
@@ -199,7 +200,6 @@ public class Ambrosia
         {
             response = transformIWantStatement(statement);
         }
-
         else
         {
             // Look for a two word (you <something> me)
