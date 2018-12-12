@@ -10,8 +10,9 @@
  * @version December 2019
  *
  */
+
 import java.util.Scanner;
-import java.util.*; // import everything including List and ArrayList
+import java.util.*; // Import everything including List and ArrayList.
 
 public class Ambrosia
 {
@@ -19,9 +20,10 @@ public class Ambrosia
      * Get a default greeting   
      * @return a greeting
      */ 
-    public String getGreeting()
+    public String getGreeting() //Greets a user for the first time.
     {
-        return "Hello! It is I, Ambrosia! What are we cooking today?";
+        System.out.println("");
+        return "Hello! It is I, Ambrosia! What are we cooking today? Or perhaps you'd like to teach me a recipe?";
     }
     
     /**
@@ -29,16 +31,16 @@ public class Ambrosia
      * 
      * @param statement
      *            the user statement
-     * @return a response based on the rules given
+     * @return a response based on the rules given and the keywords inputted
      */
-    public String getResponse(String statement)
+    public String getResponse(String statement) //Basic generic response code.
     {
         String response = "";
         if (statement.length() == 0)
         {
             response = "Say something, please.";
         }
-	   else if (findKeyword(statement, "no") >= 0)
+       else if (findKeyword(statement, "no") >= 0)
         {
             response = "Okay. What else should I know?";
         }
@@ -130,7 +132,7 @@ public class Ambrosia
         }
          else if (findKeyword(statement, "crunchy") >= 0)
         {
-            response = "I love crunchy food! Do you have anything in particular you want to make?";
+           response = "I love crunchy food! Do you have anything in particular you want to make?";
         }
           else if (findKeyword(statement, "sauce") >= 0)
         {
@@ -187,8 +189,7 @@ public class Ambrosia
         {
             response = "Are you hungry? What do you want to eat?";
         }
-
-   
+        
         // Responses which require transformations
         else if (findKeyword(statement, "I want to eat", 0) >= 0)
         {
@@ -204,7 +205,7 @@ public class Ambrosia
             // Look for a two word (you <something> me)
             // pattern
             int psn = findKeyword(statement, "you", 0);
-
+            
             if (psn >= 0
                     && findKeyword(statement, "me", psn) >= 0)
             {
@@ -223,12 +224,12 @@ public class Ambrosia
     }
     
     /**
-     * Take a statement with "I want to <something>." and transform it into 
-     * "What would it mean to <something>?"
+     * Take a statement with "I want to eat <something>." and transform it into 
+     * "Alright, do you want to try making <something> today?"
      * @param statement the user statement, assumed to contain "I want to"
      * @return the transformed statement
      */
-    private String transformIWantToEatStatement(String statement)
+    private String transformIWantToEatStatement(String statement) //Changes statements into I want to eat something.
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -245,7 +246,15 @@ public class Ambrosia
         //return "Would you really be happy if you had to " + restOfStatement + "?";
     }
     
-    private String transformIWantStatement(String statement)
+    /**
+     * Gives a response to a user statement by asking if a user would truly be happy with that item.
+     * 
+     * @param statement
+     *            the user statement, assumed to contain "I want"
+     * @return the transformed statement
+     */
+    
+    private String transformIWantStatement(String statement) //I want statements.
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -288,6 +297,12 @@ public class Ambrosia
         return "What makes you think that I " + restOfStatement + " you?";
     }
     
+    /**
+     * Take a statement with "I <something> you" and transform it into 
+     * "Why do you <something> me?"
+     * @param statement the user statement, assumed to contain "I" followed by "you"
+     * @return the transformed statement
+     **/
     private String transformMeYouStatement(String statement)
     {
         //  Remove the final period, if there is one
@@ -307,6 +322,7 @@ public class Ambrosia
         String restOfStatement = statement.substring(psnOfI + 2, psnOfYou).trim();
         return "Why do you " + restOfStatement + " me?";
     }
+    
     /**
      * Search for one word in phrase.  The search is not case sensitive.
      * This method will check that the given goal is not a substring of a longer string
@@ -367,7 +383,8 @@ public class Ambrosia
 
 
     /**
-     * Pick a default response to use if nothing else fits.
+     * Pick a default response to use if nothing else fits. Randomly generates a number between 0 and 10 which becomes the 
+     * index of the word that is picked from an array list of random responses.
      * @return a non-committal string
      */
     private String getRandomResponse()
@@ -410,4 +427,39 @@ public class Ambrosia
         return response;
         
     }
+    
+    /**
+     * Check if a user is sure of their recipe before adding it to the master recipe book.
+     * @param the name of the recipe, the type of meal, and the list it should go into
+     * @return whether it could fit or not, and adds the recipe to the book
+     ***/
+    public boolean userSure(String userSureInput, String f, List<String> m) {
+    userSureInput = userSureInput.toLowerCase();
+    if (userSureInput.contains("yes")) {
+        m.add(f);
+    }
+    else {
+        return false;
+    }
+    return true;
+    }
+    
+    /**
+     * Adds a recipe to its array list and double checks again, that the user is certain of their actions. 
+     * @param the type of meal and the list it corresponds to
+     * @return the master recipe book list
+     **/
+    public void addRecipeToList(String meal, List<String> list){ //Adds a recipe to the array list.
+        System.out.println("What is the name of your delicious recipe for " + meal + " ? Type it exactly as you want it to appear in your recipe book!");
+        Scanner in = new Scanner (System.in); //Creates an instance for the user's response.
+        String b = in.nextLine();
+        System.out.println("Are you sure you want to add " + b + " to the master recipe book?");
+        String userSureInput = in.nextLine();
+        userSure(userSureInput, b, list);
+        System.out.println("Our current master " + meal + " recipe book contains: ");
+        for (String m : list) {
+		System.out.println(m);
+	}
+    }
+    
 }
