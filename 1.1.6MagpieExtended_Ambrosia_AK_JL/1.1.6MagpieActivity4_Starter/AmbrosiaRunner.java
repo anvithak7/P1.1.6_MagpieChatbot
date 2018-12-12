@@ -76,6 +76,7 @@ public class AmbrosiaRunner //Creates a class to run Ambrosia.
                 if (userRecipeInput.contains("done")) {
                    System.out.println("What are we cooking now?");
                    statement = in.nextLine();
+                   break;
                 }
 }
 while (!statement.equals("Bye")) //Continues the conversation when the user has not yet said goodbye.
