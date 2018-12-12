@@ -41,11 +41,29 @@ public class Ambrosia
         {
             response = "Say something, please.";
         }
+	   // Responses which require transformations
+        else if (findKeyword(statement, "I want to eat", 0) >= 0)
+        {
+            response = transformIWantToEatStatement(statement);
+        }
+         else if (findKeyword(statement, "I want to cook", 0) >= 0)
+        {
+            response = LocateRecipeForIWantToCookStatement(statement);
+        }
+        else if (findKeyword(statement, "I want", 0) >= 0)
+        {
+            response = transformIWantStatement(statement);
+        }
+        else if (findKeyword(statement, "recipes", 0) >= 0)
+        {
+            response = getRecipes();
+        }
+        //Normal input-responses
         else if (findKeyword(statement, "no") >= 0)
         {
             response = "Okay. What else should I know?";
         }
-        else if (findKeyword(statement, "yes") >= 0)
+         else if (findKeyword(statement, "yes") >= 0)
         {
             response = "Good! Let's do it.";
         }
@@ -53,40 +71,40 @@ public class Ambrosia
         {
             response = "Of course!";
         }
-      	else if (findKeyword(statement, "spicy") >= 0)
+      else if (findKeyword(statement, "spicy") >= 0)
         {
             response = "Oh, you want to eat spicy food? Do you want to make mapo tofu?";
         }
-      	else if (findKeyword(statement, "not spicy") >= 0)
+      else if (findKeyword(statement, "not spicy") >= 0)
         {
             response = "Hmmm... what non-spicy food should we cook today? What do you want to cook?";
         }
-      	else if (findKeyword(statement, "sweet") >= 0)
+      else if (findKeyword(statement, "sweet") >= 0)
         {
             response = "I love sweet food! What kind of sweet food are you craving?";
         }
         
-       	else if (findKeyword(statement, "breakfast") >= 0)
+       else if (findKeyword(statement, "breakfast") >= 0)
         {
             response = "Breakfast is the most important meal of the day! What would you like to eat?";
         }
-       	else if (findKeyword(statement, "lunch") >= 0)
+       else if (findKeyword(statement, "lunch") >= 0)
         {
             response = "I love having lunch! What would you like to eat?";
         }
-      	else if (findKeyword(statement, "dinner") >= 0)
+      else if (findKeyword(statement, "dinner") >= 0)
         {
             response = "It's always nice to have a good meal to end the day. What would you like to eat?";
         }
-      	else if (findKeyword(statement, "dessert") >= 0)
+      else if (findKeyword(statement, "dessert") >= 0)
         {
             response = "Yum! Dessert is always something I look forward to! What would you like to eat?";
         }
-      	else if (findKeyword(statement, "snack") >= 0)
+      else if (findKeyword(statement, "snack") >= 0)
         {
             response = "I'm sure we can all agree that we love snacks! What would you like to eat?";
         }
-      	else if (findKeyword(statement, "dim sum") >= 0)
+      else if (findKeyword(statement, "dim sum") >= 0)
         {
             response = "Yum! Eating dim sum is always something I look forward to! What would you like to eat?";
         }
@@ -99,19 +117,19 @@ public class Ambrosia
         {
             response = "We offer many seafood recipes! What would you like to eat?";
         }
-        else if (findKeyword(statement, "dumplings") >= 0)
+        else if (findKeyword(statement, "wonton") >= 0)
         {
-            response = "I love dumplings! What kind of dumplings would you like to eat?";
+            response = "I love eating wontons! What kind do you like to eat?";
         }
-        else if (findKeyword(statement, "tofu") >= 0)
+        else if (findKeyword(statement, "fish") >= 0)
         {
-            response = "Do you want to try making mapo tofu? It's spicy, but delicious!";
+            response = "Do you want to try making hot and sour fish? It's spicy, but delicious!";
         }
         else if (findKeyword(statement, "soup") >= 0)
         {
             response = "Drinking warm soup is always the best! What kind of soup do you want to make?";
         }
-        else if (findKeyword(statement, "lactose-intolerant") >= 0)
+         else if (findKeyword(statement, "lactose-intolerant") >= 0)
         {
             response = "We offer many recipes for people with lactose-intolerance. Do you have anything in particular you want to make?";
         }
@@ -123,7 +141,7 @@ public class Ambrosia
         {
             response = "We offer many recipes for dishes containing eggplant. Do you have anything in particular you want to make?";
         }
-        else if (findKeyword(statement, "peanuts") >= 0)
+          else if (findKeyword(statement, "peanuts") >= 0)
         {
             response = "We offer a variety of recipes for dishes with peanuts. Do you have anything in particular you want to make?";
         }
@@ -131,23 +149,23 @@ public class Ambrosia
         {
             response = "Spinach is very healthy for you! Do you have anything in particular you want to make?";
         }
-        else if (findKeyword(statement, "crunchy") >= 0)
+         else if (findKeyword(statement, "crunchy") >= 0)
         {
-           response = "I love crunchy food! Do you have anything in particular you want to make?";
+            response = "I love crunchy food! Do you have anything in particular you want to make?";
         }
-        else if (findKeyword(statement, "sauce") >= 0)
+          else if (findKeyword(statement, "sauce") >= 0)
         {
             response = "What kind of sauce you want to use? Soy sauce? BBQ sauce?";
         }
-        else if (findKeyword(statement, "curry") >= 0)
+         else if (findKeyword(statement, "curry") >= 0)
         {
             response = "What kind of curry do you want to make?";
         }
-        else if (findKeyword(statement, "carrots") >= 0)
+         else if (findKeyword(statement, "carrots") >= 0)
         {
             response = "Carrots are very healthy for you! Do you have any dish in particular you want to make?";
         }
-        else if (findKeyword(statement, "rice") >= 0)
+         else if (findKeyword(statement, "rice") >= 0)
         {
             response = "I love rice! Do you have any dish in particular you want to make?";
         }
@@ -155,11 +173,11 @@ public class Ambrosia
         {
             response = "I love noodles! Do you have any dish in particular you want to make?";
         }
-        else if (findKeyword(statement, "sour") >= 0)
+         else if (findKeyword(statement, "sour") >= 0)
         {
             response = "Sour food can taste very good! Do you have any dish in particular you want to make?";
         }
-        else if (findKeyword(statement, "nut-free") >= 0)
+         else if (findKeyword(statement, "nut-free") >= 0)
         {
             response = "We consider your safety and preferences some of our top priorities in addition to giving you a recipe to a delicious meal. Do you have anything in particular you want to make?";
         }
@@ -180,7 +198,7 @@ public class Ambrosia
         {
             response = "Do you have anything in mind that you want to eat?";
         }
-        else if (findKeyword(statement, "Chinese food") >= 0
+         else if (findKeyword(statement, "Chinese food") >= 0
                 || findKeyword(statement, "Chinese cuisine") >= 0)
         {
             response = "Do you have anything in mind that you want to eat?";
@@ -190,16 +208,7 @@ public class Ambrosia
         {
             response = "Are you hungry? What do you want to eat?";
         }
-        
-        // Responses which require transformations
-        else if (findKeyword(statement, "I want to eat", 0) >= 0)
-        {
-            response = transformIWantToEatStatement(statement);
-        }
-        else if (findKeyword(statement, "I want", 0) >= 0)
-        {
-            response = transformIWantStatement(statement);
-        }
+       
         else
         {
             // Look for a two word (you <something> me)
@@ -241,7 +250,7 @@ public class Ambrosia
                     .length() - 1);
         }
         int psn = findKeyword (statement, "I want to eat", 0);
-        String restOfStatement = statement.substring(psn + 9).trim();
+        String restOfStatement = statement.substring(psn + 13).trim();
         return "Alright! Do you want to try making " + restOfStatement + " today?";
         //return "Would you really be happy if you had to " + restOfStatement + "?";
     }
@@ -427,7 +436,119 @@ public class Ambrosia
         return response;
         
     }
-    
+      /**
+     * Sets up the master recipe book as an array list of strings
+     * iterates through each recipe name in the array and prints each out
+     * @return list of recipes our chatbot knows as strings on a new line and non-committal string
+     ***/
+    private String getRecipes()
+    {  
+        List<String> recipeList = new ArrayList<String>();
+        recipeList.add("pork dumplings");
+        recipeList.add("mapo tofu");
+        
+        //List response = recipeList.get(0);
+        for(int i=0;i<recipeList.size();i++){
+            System.out.println(recipeList.get(i));
+        } 
+        
+        return "Which dish do you want to cook? I'll tell you the steps!";
+    }
+     /**
+     * Sets up each recipe in the master cook book as its own array list.
+     * Each step in the recipe is an item in that array list. 
+     * All array lists of each individual recipe are added to the larger array list containing all recipe steps.
+     * Iterates through each item in the larger arraylist for the given dish name.
+     * @param the name of the specific dish 
+     * @return the steps of the recipe the user input as an array
+     ***/
+    private String getRecipeSteps(String dishName)
+    {  
+        
+        List<String> porkdumplings = new ArrayList<String>();
+        porkdumplings.add("pork dumplings");
+        porkdumplings.add("\nSteps:");
+        porkdumplings.add("\nGet the ingredients: 1/2 cup soy sauce, 1 tablespoon seasoned rice vinegar, 1 tablespoon finely chopped Chinese chives, 1 tablespoon sesame seeds, 1 tsp chile-garlic sauce (such as Sriracha), 1 lb ground pork, 3 cloves garlic(minced), 1 egg(beaten), 2 tablespoons finely chopped Chinese chives, 2 tablespoons soy sauce, 1.5 tablespoons sesame oil, 1 tablespoon minced fresh ginger, 50 dumpling wrappers, 1 cup vegetable oil for frying, and 1 quart water or more.");
+        porkdumplings.add("\nCombine 1/2 cup soy sauce, rice vinegar, 1 tablespoon chives, sesame seeds, and chile sauce in a small bowl. Set aside.");
+        porkdumplings.add("\nMix pork, garlic, egg, 2 tablespoons chives, soy sauce, sesame oil, and ginger in a large bowl until thoroughly combined. ");
+        porkdumplings.add("\nPlace a dumpling wrapper on a lightly floured work surface and spoon about 1 tablespoon of the filling in the middle.");
+        porkdumplings.add("\nWet the edge with a little water and crimp together forming small pleats to seal the dumpling. Repeat with remaining dumpling wrappers and filling.");
+        porkdumplings.add("\nHeat 1 to 2 tablespoons vegetable oil. in a large skillet over medium-high heat.");
+        porkdumplings.add("\nPlace 8 to 10 dumplings in the pan and cook until browned, about 2 minutes per side.");
+        porkdumplings.add("\nPour in 1 cup of water, cover and cook until the dumplings are tender and the pork is cooked through, about 5 minutes. Repeat for remaining dumplings.");
+
+        List<String> mapotofu = new ArrayList<String>();
+        mapotofu.add("mapo tofu");
+        mapotofu.add("\nSteps:");
+        
+        List<List> recipeStepsList = new ArrayList<List>();
+        recipeStepsList.add(porkdumplings);
+        recipeStepsList.add(mapotofu);
+        
+        for(int i=0;i<recipeStepsList.size();i++){
+            if (dishName.equals(recipeStepsList.get(i).get(0)))
+            {
+                System.out.println(recipeStepsList.get(i));
+                return "Have fun cooking! Enjoy your meal!";
+            }
+            /**
+             else {
+                return "Sorry. This recipe is unavailable at this time! Try another recipe.";
+            }
+            */
+        } 
+        
+        return "Are you still hungry? We encourage you to continue exploring our recipes!";
+    }
+     /**
+     * Identifies the dish user wants to cook from "I want to cook" statement by the words following the phrase.
+     * User-input dish is compared to the names of the dishes in the list of recipes to check if it is in it
+     * If the dish is in the list of recipes, the getRecipeSteps method is called 
+     * @param the user's statement
+     * @return the steps of the dish's recipe or non-commital string informing the user that the recipe they want is not in the cookbook
+     ***/
+    private String LocateRecipeForIWantToCookStatement(String statement)
+    {
+        List<String> recipeList = new ArrayList<String>();
+
+        recipeList.add("pork dumplings");
+        recipeList.add("mapo tofu");
+        
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword (statement, "I want to cook", 0);
+        String restOfStatement = statement.substring(psn + 14).trim();
+        //System.out.println(restOfStatement);
+        
+        
+        for(int i=0;i<recipeList.size();i++){
+            
+            //System.out.println(recipeList.get(i) + "h");
+            
+            if (restOfStatement.equals(recipeList.get(i)))
+            {
+                String dishName = restOfStatement;
+                //return dishName;
+                getRecipeSteps(dishName);
+            }
+            /** doesn't work with else statement
+            else
+            {
+                return "error";      
+            }
+            */
+        } 
+        
+        return "Sorry, we do not have the recipe to this dish! Try looking at our other recipes!";
+       
+    }
     /**
      * Check if a user is sure of their recipe before adding it to the master recipe book.
      * @param the name of the recipe, the type of meal, and the list it should go into
