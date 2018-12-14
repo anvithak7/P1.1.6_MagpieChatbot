@@ -123,7 +123,7 @@ public class Ambrosia
         }
         else if (findKeyword(statement, "fish") >= 0)
         {
-            response = "Do you want to try making hot and sour fish? It's spicy, but delicious!";
+            response = "Do you want to try making hot and sour fish? It's spicy and sour, but delicious!";
         }
         else if (findKeyword(statement, "soup") >= 0)
         {
@@ -444,6 +444,12 @@ public class Ambrosia
         List<String> recipeList = new ArrayList<String>();
         recipeList.add("pork dumplings");
         recipeList.add("naan");
+        recipeList.add("dosa");
+        recipeList.add("pulao");
+        recipeList.add("vada");
+        recipeList.add("payasa");
+        recipeList.add("mapo tofu");
+        recipeList.add("egg tart");
 
         //List response = recipeList.get(0);
         for(int i=0;i<recipeList.size();i++){
@@ -491,20 +497,20 @@ public class Ambrosia
         recipeStepsList.add(porkdumplings);
         recipeStepsList.add(naan);
 
+        
         for(int i=0;i<recipeStepsList.size();i++){
             if (dishName.equals(recipeStepsList.get(i).get(0)))
             {
-                System.out.println(recipeStepsList.get(i));
-                return "Have fun cooking! Enjoy your meal!";
+                for(int j=0;j<recipeStepsList.get(i).size();j++){
+                System.out.println(recipeStepsList.get(i).get(j));
+                
             }
-            /**
-            else {
-            return "Sorry. This recipe is unavailable at this time! Try another recipe.";
-            }
-             */
-        } 
-
-        return "Are you still hungry? We encourage you to continue exploring our recipes!";
+            
+        }
+    }   
+       
+       System.out.println("\nHave fun cooking! Enjoy your meal!");
+       return " ";
     }
 
     /**
@@ -525,7 +531,7 @@ public class Ambrosia
         recipeList.add("vada");
         recipeList.add("payasa");
         recipeList.add("mapo tofu");
-        recipeList.add("dim sum");
+        recipeList.add("egg tart");
 
         statement = statement.toLowerCase();
         //  Remove the final period, if there is one
@@ -539,25 +545,21 @@ public class Ambrosia
         }
         int psn = findKeyword (statement, "I want to cook", 0);
         String restOfStatement = statement.substring(psn + 14).trim();
-        //System.out.println(restOfStatement);
-
         for(int i=0;i<recipeList.size();i++){
-            //System.out.println(recipeList.get(i) + "h");
+            
             if (restOfStatement.equals(recipeList.get(i)))
             {
                 String dishName = restOfStatement;
-                //return dishName;
+                
                 getRecipeSteps(dishName);
+                //prints out for all inputs that are listed in recipe list
+                System.out.println("\n(If no recipe shows up, the recipe is incomplete at this time.)");
+                return"\nAre you still hungry? We encourage you to continue exploring our recipes!";
             }
-            /** doesn't work with else statement
-            else
-            {
-            return "error";      
-            }
-             */
-        } 
-
-        return "Have fun cooking! Enjoy your meal!";
+           
+        }
+        //prints out this response for inputs not in recipe list
+        return"\nSorry, the recipe for that dish is unavailable at this time!";
 
     }
 
