@@ -26,6 +26,9 @@ public class AmbrosiaRunner //Creates a class to run Ambrosia.
         Scanner in = new Scanner (System.in); //Creates an instance for the user's response.
         String statement = in.nextLine(); //Creates a placeholder for the user's input on the next line.
         statement = statement.toLowerCase();
+        
+while (!statement.equals("Bye")) //Continues the conversation when the user has not yet said goodbye.
+        {
         if(statement.contains("teach")) {
             while (start == true) {
                 System.out.println("What mealtime would you like to add an item to? We have a breakfast, lunch, dinner, snacks, and dessert menu! If you want to go back to cooking, type 'done.'");
@@ -79,11 +82,9 @@ public class AmbrosiaRunner //Creates a class to run Ambrosia.
                    break;
                 }
 }
-while (!statement.equals("Bye")) //Continues the conversation when the user has not yet said goodbye.
-        {
-            System.out.println (ambrosia.getResponse(statement)); 
-            statement = in.nextLine();
 }
+                System.out.println (ambrosia.getResponse(statement)); 
+                statement = in.nextLine();
 }
 }
 }
